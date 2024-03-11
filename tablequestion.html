@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table_question</title>
+    <style>
+        td,
+        th {
+            border: 1px solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+
+
+    <script>
+        const people = [
+            {
+                name: "Girraj",
+                age: 20,
+                local: true,
+                hometown: "Jaipur",
+                student: true,
+            },
+            {
+                name: "Prateek",
+                age: 25,
+                local: false,
+                hometown: "Karauli",
+                student: false,
+                profession: "CA",
+            },
+            {
+                name: "Ashish",
+                age: 22,
+                local: true,
+                hometown: "Jaipur",
+                student: true,
+            },
+            {
+                name: "Shashwat",
+                age: 25,
+                local: true,
+                hometown: "Jaipur",
+                student: false,
+                profession: "Jewelery Manufacturer",
+            },
+        ];
+
+        const heads = ["s.no.", "name", "age", "hometown", "profession"]
+        const table = document.createElement("table")
+        const headingRow = document.createElement("tr")
+        for (let i = 0; i < 5; i++) {
+            const headers = document.createElement("th")
+            headers.innerHTML = heads[i].toUpperCase()
+            headingRow.append(headers)
+        }
+        table.append(headingRow)
+
+        people.forEach((person, index) => {
+            const keys = Object.keys(person)
+            const tr = document.createElement("tr")
+
+            const sno = document.createElement("td")
+            sno.innerText = index + 1
+            tr.append(sno);
+
+            const name = document.createElement("td")
+            name.innerText = person.name
+            tr.append(name);
+
+            const age = document.createElement("td")
+            age.innerText = person.age
+            tr.append(age);
+
+            const hometown = document.createElement("td")
+            if (person.local)
+                hometown.innerText = person.hometown;
+            else hometown.innerText = "--"
+            tr.append(hometown);
+
+
+            const profession = document.createElement("td")
+            if (!person.student) profession.innerText = person.profession;
+            else profession.innerText = "--"
+            tr.append(profession)
+
+            table.append(tr)
+        })
+
+        document.querySelector("#wrapper").append(table)
+
+
+    </script>
+</body>
+
+</html>
